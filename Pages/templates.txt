@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<!--Стандрартый метод-->
+<?php echo carbon_get_post_meta( get_the_ID(), 'test_field_full_format' ); ?>
+
+<!--С использованием упрощения в виде функции-->
+<?php 
+$id = get_the_ID();					
+function post_meta($name)
+{
+    global $id;				
+    if (carbon_get_post_meta($id, $name)) {
+        echo carbon_get_post_meta($id, $name);
+    }   
+}
+?>
+<?php echo post_meta('test_field_short_format') ?>
+
+<!--Пример использования complex-->
+<?php $complex_meta = carbon_get_the_post_meta( 'test_meta_complex' );?>
+	<ul>
+		<?php foreach ( $complex_meta as $complex ) {?>
+			<li><?php echo $complex['meta_complex_text'];?></li>
+		<?php }?>
+    </ul>
+   
+<!--Theme Option-->
+<?php echo carbon_get_theme_option('test_theme_option')?>
+
+<?php $coplex_theme_option = carbon_get_theme_option( 'test_theme_comples' );?>
+	<ul>
+		<?php foreach ( $coplex_theme_option as $complex ) {?>
+			<li><?php echo $complex['theme_complex_text'];?></li>
+		<?php }?>
+    </ul>
+
+<!-- Вторая часть carbon_get_term_meta (Все настройки в категориях) -->
+<?php 
+$categories = get_categories();
+
+if( $categories ){
+
+	foreach( $categories as $cat ){
+
+    $term_id = $cat->term_id ;
+    $term_thumbnail_id = carbon_get_term_meta( $term_id, 'crb_thumb');
+    $term_thumbnail_url = wp_get_attachment_image_url( $term_thumbnail_id, 'full' ); ?>
+
+    <div>
+    <p style="color:<?php echo carbon_get_term_meta( $term_id, 'crb_title_color') ?>"><?php echo $cat->name?></p>
+    <img width="300" src="<?php echo $term_thumbnail_url; ?>" alt="" />
+    
+    <?php 
+    $complex_test = carbon_get_term_meta( $term_id, 'test_term_complex' );
+    foreach ( $complex_test as $complex ) {?>
+    <ul>
+    <li><?php echo $complex['complex_text'];?></li>
+    </ul>
+
+    </div>
+
+<?php }
+    }
+} ?>
+<!--третья часть carbon_get_user_meta (все настройки в пользователях)-->
+<?php
+$users = get_users();
+
+foreach( $users as $user ){
+	$user_id=$user->ID;?>
+
+    <div> 
+    <?php echo get_avatar( $user_id, 96 );?>
+    <p><?php echo carbon_get_user_meta($user_id, 'crb_some_text'); ?></p>
+
+    <?php
+
+    $test_user_complex = carbon_get_user_meta( $user_id, 'test_user_complex' );
+
+    foreach ( $test_user_complex as $test ) {?>
+       <ul>
+            <li>
+                <?php echo $test['crb_test_fields']; ?>
+            </li>
+       </ul>
+    </div>
+
+<?php } 
+} ?>
+</body>		
+</html>
