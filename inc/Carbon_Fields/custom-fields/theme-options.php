@@ -29,7 +29,7 @@ Container::make( 'theme_options','Options'  )
              ))
 ));
 
-//Для второй части 
+//term_meta 
 Container::make( 'term_meta',  'Test term_taxonomy'  )
     ->where( 'term_taxonomy', '=', 'category' )
     ->add_fields( array(
@@ -42,7 +42,7 @@ Container::make( 'term_meta',  'Test term_taxonomy'  )
             Field::make( 'text', 'complex_text', 'Test Complex Text' ),        
         )),
 ));
-//Третья часть 
+//user_meta 
 Container::make('user_meta', 'Test user fields')
     ->add_fields(array(
         Field::make('text', 'crb_some_text', 'Test text under avatar'),
