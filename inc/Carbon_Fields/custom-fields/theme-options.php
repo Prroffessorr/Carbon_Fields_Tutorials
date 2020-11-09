@@ -60,7 +60,7 @@ use Carbon_Fields\Widget;
 class CarbonFieldsWidgetExample extends Widget {
 
     function __construct() {
-        $this->setup( 'widget_easy_example', 'Name of your widget', 'Desctripion of widget', array(
+        $this->setup( 'widget_easy_example', 'Name of widget', 'Desctripion of widget', array(
             Field::make( 'text', 'title', 'Title' )
                 ->set_default_value( 'Test title'),
    
@@ -105,21 +105,4 @@ function load_widgets() {
     register_widget( 'CarbonFieldsWidgetExample' );
 }
 
-//Comment meta
-Container::make( 'comment_meta', __( 'Test comment' ) )
-    ->add_fields( array(
-    
-        Field::make( 'select', 'comment_test_select', __( 'Comment test select' ) )
-        ->set_width( 50 )
-        ->set_options( array(
-            '1' => 1,
-            '2' => 2,
-            '3' => 3,
-            '4' => 4,
-            '5' => 5,
-        ) ),
-
-        Field::make( 'text', 'comment_test_some_text', __( 'Comment test text' ) )
-        ->set_width( 50 ),
-    ) );
 ?>

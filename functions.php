@@ -193,5 +193,5 @@ function crb_attach_theme_options() {
 require_once __DIR__ . '/inc/Carbon_Fields/custom-fields/theme-options.php';
 
 }
-//for create widgets
+//Для вызова функции создания виджета
 add_action( 'widgets_init', 'load_widgets' );
