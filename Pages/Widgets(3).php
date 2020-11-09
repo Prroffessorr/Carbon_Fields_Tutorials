@@ -11,6 +11,8 @@
 <html lang="en">
 <body>
 
+<!-- Widgets -->
+<?php dynamic_sidebar('Example'); ?>   
 
 <!--Comments-->
 <?php $comments = get_comments();

@@ -194,4 +194,4 @@ require_once __DIR__ . '/inc/Carbon_Fields/custom-fields/theme-options.php';
 
 }
 //Для вызова функции создания виджета
-//add_action( 'widgets_init', 'load_widgets' );
+add_action( 'widgets_init', 'load_widgets' );
