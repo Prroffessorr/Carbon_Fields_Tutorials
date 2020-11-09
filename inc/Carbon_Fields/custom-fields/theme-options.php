@@ -76,7 +76,8 @@ class CarbonFieldsWidgetExample extends Widget {
 
         $this->print_wrappers = false;
     }
-
+    
+    // Вызывается при рендеринге виджета в интерфейсе
     function front_end( $args, $instance ) {
 
         if(!empty($instance['title'])){

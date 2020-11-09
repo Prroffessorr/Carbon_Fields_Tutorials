@@ -14,27 +14,5 @@
 <!-- Widgets -->
 <?php dynamic_sidebar('Example'); ?>
 
-<!--Comments-->
-<?php $comments = get_comments();
-
-foreach( $comments as $comment ){ 
-
-    $test_info = carbon_get_comment_meta( $comment->comment_ID, 'comment_test_select' );
-    $rating    = carbon_get_comment_meta( $comment->comment_ID, 'comment_test_some_text' );
- 
-    echo ' Autor: ' . $comment->comment_author . '<br>';
-    echo ' Content: ' . $comment->comment_content . '<br>';
-
-    if ( ! empty( $test_info ) ) {
-        echo ' Rating: ' . $test_info . '<br>';
-    } 
-
-    if ( ! empty( $rating ) ) {
-        echo 'Test Info: ' . $rating . '<br>';
-    } 
-   
-}
-?>
-
 </body>
 </html>
