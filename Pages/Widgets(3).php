@@ -23,11 +23,11 @@ foreach( $comments as $comment ){
     echo ' Autor: ' . $comment->comment_author . '<br>';
     echo ' Content: ' . $comment->comment_content . '<br>';
 
-    if ( ! empty( $test_info ) ) {
+    if ( ! empty( $rating ) ) {
         echo ' Rating: ' .  $rating . '<br>';
     } 
 
-    if ( ! empty( $rating ) ) {
+    if ( ! empty( $test_info ) ) {
         echo 'Test Info: ' . $test_info . '<br>';
     } 
    
